@@ -1,12 +1,10 @@
-Done. I only changed the **bakery name** and **background image URL**. Everything else stays exactly the same.
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bakery</title>
+<title>Barts Bakery</title>
 
 <style>
 * {
@@ -31,7 +29,7 @@ body::before {
   inset: 0;
   background:
     linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("https://i.postimg.cc/DzCFcKQq/c158fa6e7c4870a54c5ec4bb1c854179.jpg")
+    url("backround.jpg")
     center/cover no-repeat;
   z-index: 0;
 }
@@ -71,5 +69,125 @@ body::before {
 /* Logo */
 .logo {
   width: 150px;
-  max
+  max-width: 80%;
+  margin-bottom: 18px;
+}
+
+/* Bart Image */
+.bart {
+  width: 120px;
+  max-width: 55%;
+  margin: 0 auto 18px;
+  display: block;
+}
+
+/* Bakery Name */
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 25px;
+}
+
+/* Buttons */
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.buttons a {
+  display: block;
+  width: 100%;
+  padding: 16px;
+
+  border: none;
+  border-radius: 16px;
+
+  background: #fff;
+  color: #000;
+
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform .12s ease,
+    box-shadow .12s ease,
+    background .2s ease;
+}
+
+.buttons a:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+}
+
+.buttons a:active {
+  transform: scale(.97);
+  box-shadow: 0 5px 12px rgba(0,0,0,.2);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .card {
+    padding: 30px 22px;
+  }
+
+  .logo {
+    width: 135px;
+  }
+
+  .bart {
+    width: 105px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <!-- Main Logo -->
+  <img
+    class="logo"
+    src="logo.png"
+    alt="Barts Bakery Logo"
+  >
+
+  <!-- Bart Image -->
+  <img
+    class="bart"
+    src="bart.png"
+    alt="Bart"
+  >
+
+  <!-- Bakery Name -->
+  <h1>Barts Bakery</h1>
+
+  <!-- Three Buttons -->
+  <div class="buttons">
+
+    <a href="#" id="button1">
+      MENU
+    </a>
+
+    <a href="#" id="button2">
+      ORDER ONLINE
+    </a>
+
+    <a href="#" id="button3">
+      CONTACT US
+    </a>
+
+  </div>
+
+</div>
+
+</body>
+</html>
 ```
