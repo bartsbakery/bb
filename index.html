@@ -10,47 +10,58 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  overflow: hidden;
-  position: relative;
-}
 
-/* Background */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("Background.jpg")
-    center/cover no-repeat;
-  z-index: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+
+  position: relative;
+  overflow: hidden;
+
+  /* Background */
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("./Backround.png");
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 /* Main Card */
 .card {
   position: relative;
   z-index: 2;
+
   width: 90%;
   max-width: 380px;
+
   padding: 35px 28px;
+
   text-align: center;
   color: #fff;
 
-  background: rgba(255,255,255,.14);
+  background: rgba(255, 255, 255, 0.14);
+
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 
   border-radius: 24px;
-  box-shadow: 0 25px 50px rgba(0,0,0,.45);
 
-  animation: fadeIn .8s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+
+  animation: fadeIn 0.8s ease;
 }
 
 @keyframes fadeIn {
@@ -70,6 +81,9 @@ body::before {
   width: 150px;
   max-width: 80%;
   margin-bottom: 18px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Bart Image */
@@ -97,6 +111,7 @@ h1 {
 .buttons a {
   display: block;
   width: 100%;
+
   padding: 16px;
 
   border: none;
@@ -106,28 +121,34 @@ h1 {
   color: #000;
 
   text-decoration: none;
+
   font-size: 17px;
   font-weight: 700;
 
   cursor: pointer;
 
   transition:
-    transform .12s ease,
-    box-shadow .12s ease,
-    background .2s ease;
+    transform 0.12s ease,
+    box-shadow 0.12s ease,
+    background 0.2s ease;
 }
 
 .buttons a:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,.25);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 .buttons a:active {
-  transform: scale(.97);
-  box-shadow: 0 5px 12px rgba(0,0,0,.2);
+  transform: scale(0.97);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Mobile */
 @media (max-width: 480px) {
+
+  body {
+    background-attachment: scroll;
+  }
+
   .card {
     padding: 30px 22px;
   }
@@ -154,14 +175,14 @@ h1 {
   <!-- Main Logo -->
   <img
     class="logo"
-    src="logo.png"
+    src="./logo.png"
     alt="Barts Bakery Logo"
   >
 
   <!-- Bart Image -->
   <img
     class="bart"
-    src="bart.png"
+    src="./bart.png"
     alt="Bart"
   >
 
