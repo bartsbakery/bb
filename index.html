@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,10 +55,108 @@ body::before {
   pointer-events: none;
 }
 
+/* =========================
+   SNOW EFFECT
+   ========================= */
+
+.snow {
+  position: fixed;
+  top: -150px;
+  left: 0;
+
+  width: 100%;
+  height: calc(100% + 150px);
+
+  z-index: 1;
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+
+  top: -120px;
+
+  width: var(--size);
+  height: var(--size);
+
+  background-image: url("./snoweffect.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: var(--opacity);
+
+  animation:
+    snowfall var(--fall-speed) linear infinite,
+    snowspin var(--spin-speed) linear infinite;
+
+  animation-delay: var(--delay);
+
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.5));
+}
+
+/* Natural falling movement */
+@keyframes snowfall {
+
+  0% {
+    transform: translate3d(
+      0,
+      -120px,
+      0
+    );
+  }
+
+  25% {
+    transform: translate3d(
+      var(--drift1),
+      25vh,
+      0
+    );
+  }
+
+  50% {
+    transform: translate3d(
+      var(--drift2),
+      50vh,
+      0
+    );
+  }
+
+  75% {
+    transform: translate3d(
+      var(--drift3),
+      75vh,
+      0
+    );
+  }
+
+  100% {
+    transform: translate3d(
+      var(--drift4),
+      115vh,
+      0
+    );
+  }
+}
+
+/* Slow clockwise rotation */
+@keyframes snowspin {
+
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
 /* Main Card */
 .card {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 
   width: 90%;
   max-width: 380px;
@@ -67,16 +166,16 @@ body::before {
   text-align: center;
   color: #fff;
 
-  /* Simpsons-style blue glass */
+  /* More transparent Simpsons-style glass */
   background:
     linear-gradient(
       145deg,
-      rgba(255, 213, 0, 0.18),
-      rgba(0, 91, 130, 0.38)
+      rgba(255, 213, 0, 0.11),
+      rgba(0, 91, 130, 0.23)
     );
 
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
   border: 2px solid rgba(255, 213, 0, 0.55);
 
@@ -279,6 +378,151 @@ h1 {
 
 <body>
 
+<!-- Snow Layer -->
+<div class="snow">
+
+  <div class="snowflake"
+       style="
+       left: 3%;
+       --size: 32px;
+       --opacity: .85;
+       --fall-speed: 11s;
+       --spin-speed: 8s;
+       --delay: -4s;
+       --drift1: 25px;
+       --drift2: -20px;
+       --drift3: 30px;
+       --drift4: -10px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 12%;
+       --size: 22px;
+       --opacity: .7;
+       --fall-speed: 15s;
+       --spin-speed: 11s;
+       --delay: -9s;
+       --drift1: -30px;
+       --drift2: 20px;
+       --drift3: -15px;
+       --drift4: 25px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 21%;
+       --size: 38px;
+       --opacity: .9;
+       --fall-speed: 13s;
+       --spin-speed: 10s;
+       --delay: -2s;
+       --drift1: 35px;
+       --drift2: -25px;
+       --drift3: 20px;
+       --drift4: -30px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 32%;
+       --size: 18px;
+       --opacity: .65;
+       --fall-speed: 9s;
+       --spin-speed: 7s;
+       --delay: -7s;
+       --drift1: -20px;
+       --drift2: 30px;
+       --drift3: -25px;
+       --drift4: 15px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 43%;
+       --size: 30px;
+       --opacity: .8;
+       --fall-speed: 14s;
+       --spin-speed: 12s;
+       --delay: -11s;
+       --drift1: 30px;
+       --drift2: -30px;
+       --drift3: 25px;
+       --drift4: -20px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 54%;
+       --size: 24px;
+       --opacity: .75;
+       --fall-speed: 10s;
+       --spin-speed: 9s;
+       --delay: -5s;
+       --drift1: -25px;
+       --drift2: 25px;
+       --drift3: -15px;
+       --drift4: 30px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 65%;
+       --size: 40px;
+       --opacity: .9;
+       --fall-speed: 16s;
+       --spin-speed: 13s;
+       --delay: -13s;
+       --drift1: 35px;
+       --drift2: -20px;
+       --drift3: 30px;
+       --drift4: -25px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 76%;
+       --size: 20px;
+       --opacity: .7;
+       --fall-speed: 12s;
+       --spin-speed: 8s;
+       --delay: -6s;
+       --drift1: -30px;
+       --drift2: 20px;
+       --drift3: -20px;
+       --drift4: 25px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 87%;
+       --size: 34px;
+       --opacity: .85;
+       --fall-speed: 14s;
+       --spin-speed: 11s;
+       --delay: -10s;
+       --drift1: 25px;
+       --drift2: -30px;
+       --drift3: 20px;
+       --drift4: -15px;">
+  </div>
+
+  <div class="snowflake"
+       style="
+       left: 96%;
+       --size: 26px;
+       --opacity: .75;
+       --fall-speed: 10s;
+       --spin-speed: 9s;
+       --delay: -3s;
+       --drift1: -20px;
+       --drift2: 25px;
+       --drift3: -30px;
+       --drift4: 20px;">
+  </div>
+
+</div>
+
 <div class="card">
 
   <!-- Bakery Name -->
@@ -327,3 +571,4 @@ h1 {
 
 </body>
 </html>
+```
