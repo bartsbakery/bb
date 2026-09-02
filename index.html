@@ -13,6 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&display=swap" rel="stylesheet">
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -56,30 +57,46 @@ body::before {
 }
 
 /* =========================
-   SNOW EFFECT
+   SNOW
    ========================= */
 
 .snow {
   position: fixed;
-  top: -150px;
-  left: 0;
+  inset: 0;
 
   width: 100%;
-  height: calc(100% + 150px);
+  height: 100%;
 
   z-index: 1;
+
   pointer-events: none;
 
   overflow: hidden;
 }
 
+/* Individual falling snow */
 .snowflake {
   position: absolute;
 
-  top: -120px;
+  top: -100px;
 
   width: var(--size);
   height: var(--size);
+
+  animation: fall var(--speed) linear infinite;
+
+  animation-delay: var(--delay);
+
+  will-change: transform;
+}
+
+/* Snow image itself */
+.snowflake::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
 
   background-image: url("./snoweffect.png");
   background-size: contain;
@@ -88,72 +105,54 @@ body::before {
 
   opacity: var(--opacity);
 
-  animation:
-    snowfall var(--fall-speed) linear infinite,
-    snowspin var(--spin-speed) linear infinite;
+  animation: rotateSnow var(--rotation) linear infinite;
 
-  animation-delay: var(--delay);
-
-  filter: drop-shadow(0 0 2px rgba(255,255,255,0.5));
+  will-change: transform;
 }
 
-/* Natural falling movement */
-@keyframes snowfall {
+/* FALL FROM TOP TO BOTTOM */
+@keyframes fall {
 
   0% {
-    transform: translate3d(
-      0,
-      -120px,
-      0
-    );
+    transform: translate3d(0, -120px, 0);
   }
 
   25% {
-    transform: translate3d(
-      var(--drift1),
-      25vh,
-      0
-    );
+    transform: translate3d(var(--drift1), 25vh, 0);
   }
 
   50% {
-    transform: translate3d(
-      var(--drift2),
-      50vh,
-      0
-    );
+    transform: translate3d(var(--drift2), 50vh, 0);
   }
 
   75% {
-    transform: translate3d(
-      var(--drift3),
-      75vh,
-      0
-    );
+    transform: translate3d(var(--drift3), 75vh, 0);
   }
 
   100% {
-    transform: translate3d(
-      var(--drift4),
-      115vh,
-      0
-    );
+    transform: translate3d(var(--drift4), 115vh, 0);
   }
+
 }
 
-/* Slow clockwise rotation */
-@keyframes snowspin {
+/* SLOW CLOCKWISE SPIN */
+@keyframes rotateSnow {
 
   from {
-    rotate: 0deg;
+    transform: rotate(0deg);
   }
 
   to {
-    rotate: 360deg;
+    transform: rotate(360deg);
   }
+
 }
 
-/* Main Card */
+
+/* =========================
+   MAIN CARD
+   ========================= */
+
 .card {
   position: relative;
   z-index: 2;
@@ -166,12 +165,12 @@ body::before {
   text-align: center;
   color: #fff;
 
-  /* More transparent Simpsons-style glass */
+  /* More transparent glass */
   background:
     linear-gradient(
       145deg,
-      rgba(255, 213, 0, 0.11),
-      rgba(0, 91, 130, 0.23)
+      rgba(255, 213, 0, 0.09),
+      rgba(0, 91, 130, 0.20)
     );
 
   backdrop-filter: blur(12px);
@@ -192,25 +191,29 @@ body::before {
 /* Card glow */
 .card::before {
   content: "";
+
   position: absolute;
+
   inset: -2px;
 
   border-radius: 26px;
 
-  background: linear-gradient(
-    135deg,
-    rgba(255, 213, 0, 0.4),
-    transparent 40%,
-    rgba(0, 180, 220, 0.25)
-  );
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 213, 0, 0.4),
+      transparent 40%,
+      rgba(0, 180, 220, 0.25)
+    );
 
   z-index: -1;
 
   filter: blur(10px);
 }
 
-/* Animation */
+/* Card animation */
 @keyframes fadeIn {
+
   from {
     opacity: 0;
     transform: translateY(20px);
@@ -220,15 +223,25 @@ body::before {
     opacity: 1;
     transform: translateY(0);
   }
+
 }
 
-/* Bakery Name */
+
+/* =========================
+   BAKERY NAME
+   ========================= */
+
 h1 {
   margin: 0 0 30px;
 
-  font-family: "Luckiest Guy", "Bangers", Impact, sans-serif;
+  font-family:
+    "Luckiest Guy",
+    "Bangers",
+    Impact,
+    sans-serif;
 
   font-size: 36px;
+
   font-weight: 400;
 
   letter-spacing: 1px;
@@ -243,7 +256,11 @@ h1 {
     0 0 18px rgba(255, 216, 0, 0.3);
 }
 
-/* Button Sections */
+
+/* =========================
+   BUTTON SECTIONS
+   ========================= */
+
 .button-section {
   margin-bottom: 24px;
 }
@@ -252,19 +269,23 @@ h1 {
   margin-bottom: 0;
 }
 
-/* Extra spacing between titles and buttons */
 .button-section.with-title {
   margin-top: 8px;
   margin-bottom: 30px;
 }
 
-/* Small Section Titles */
+
+/* Section titles */
 .section-title {
   margin: 0 0 13px;
 
-  font-family: "Bangers", Impact, sans-serif;
+  font-family:
+    "Bangers",
+    Impact,
+    sans-serif;
 
   font-size: 16px;
+
   font-weight: 400;
 
   letter-spacing: 1.5px;
@@ -276,11 +297,16 @@ h1 {
     0 0 7px rgba(255, 216, 0, 0.5);
 }
 
-/* Buttons */
+
+/* =========================
+   BUTTONS
+   ========================= */
+
 .buttons a {
   display: block;
 
   width: 100%;
+
   padding: 16px 14px;
 
   border-radius: 17px;
@@ -296,9 +322,14 @@ h1 {
 
   text-decoration: none;
 
-  font-family: "Luckiest Guy", "Bangers", Impact, sans-serif;
+  font-family:
+    "Luckiest Guy",
+    "Bangers",
+    Impact,
+    sans-serif;
 
   font-size: 18px;
+
   font-weight: 400;
 
   letter-spacing: 0.5px;
@@ -318,8 +349,10 @@ h1 {
     background 0.2s ease;
 }
 
+
 /* Hover */
 .buttons a:hover {
+
   background: #fff8c9;
 
   transform: translateY(-2px);
@@ -330,8 +363,10 @@ h1 {
     0 0 20px rgba(255, 213, 0, 0.6);
 }
 
+
 /* Click */
 .buttons a:active {
+
   transform: translateY(3px);
 
   box-shadow:
@@ -339,7 +374,11 @@ h1 {
     0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Mobile */
+
+/* =========================
+   MOBILE
+   ========================= */
+
 @media (max-width: 480px) {
 
   body {
@@ -347,6 +386,7 @@ h1 {
   }
 
   .card {
+
     width: 90%;
 
     padding: 30px 22px 28px;
@@ -355,187 +395,219 @@ h1 {
   }
 
   h1 {
+
     font-size: 32px;
+
     margin-bottom: 27px;
   }
 
   .section-title {
+
     font-size: 15px;
+
     margin-bottom: 14px;
   }
 
   .button-section.with-title {
+
     margin-bottom: 28px;
   }
 
   .buttons a {
+
     padding: 15px 12px;
+
     font-size: 17px;
   }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- Snow Layer -->
+
+<!-- =========================
+     SNOW EFFECT
+     ========================= -->
+
 <div class="snow">
 
   <div class="snowflake"
        style="
-       left: 3%;
-       --size: 32px;
-       --opacity: .85;
-       --fall-speed: 11s;
-       --spin-speed: 8s;
-       --delay: -4s;
+       left: 2%;
+       --size: 28px;
+       --opacity: .8;
+       --speed: 12s;
+       --rotation: 10s;
+       --delay: -2s;
        --drift1: 25px;
-       --drift2: -20px;
-       --drift3: 30px;
+       --drift2: -15px;
+       --drift3: 20px;
        --drift4: -10px;">
   </div>
 
+
   <div class="snowflake"
        style="
-       left: 12%;
-       --size: 22px;
-       --opacity: .7;
-       --fall-speed: 15s;
-       --spin-speed: 11s;
-       --delay: -9s;
-       --drift1: -30px;
-       --drift2: 20px;
+       left: 11%;
+       --size: 20px;
+       --opacity: .65;
+       --speed: 15s;
+       --rotation: 13s;
+       --delay: -8s;
+       --drift1: -20px;
+       --drift2: 25px;
        --drift3: -15px;
-       --drift4: 25px;">
+       --drift4: 20px;">
   </div>
+
 
   <div class="snowflake"
        style="
        left: 21%;
-       --size: 38px;
+       --size: 34px;
        --opacity: .9;
-       --fall-speed: 13s;
-       --spin-speed: 10s;
-       --delay: -2s;
-       --drift1: 35px;
-       --drift2: -25px;
-       --drift3: 20px;
-       --drift4: -30px;">
+       --speed: 13s;
+       --rotation: 11s;
+       --delay: -5s;
+       --drift1: 30px;
+       --drift2: -20px;
+       --drift3: 25px;
+       --drift4: -15px;">
   </div>
+
 
   <div class="snowflake"
        style="
-       left: 32%;
+       left: 31%;
        --size: 18px;
        --opacity: .65;
-       --fall-speed: 9s;
-       --spin-speed: 7s;
+       --speed: 10s;
+       --rotation: 8s;
        --delay: -7s;
-       --drift1: -20px;
-       --drift2: 30px;
-       --drift3: -25px;
+       --drift1: -25px;
+       --drift2: 20px;
+       --drift3: -20px;
        --drift4: 15px;">
   </div>
 
+
   <div class="snowflake"
        style="
-       left: 43%;
+       left: 42%;
        --size: 30px;
-       --opacity: .8;
-       --fall-speed: 14s;
-       --spin-speed: 12s;
-       --delay: -11s;
-       --drift1: 30px;
-       --drift2: -30px;
-       --drift3: 25px;
-       --drift4: -20px;">
-  </div>
-
-  <div class="snowflake"
-       style="
-       left: 54%;
-       --size: 24px;
-       --opacity: .75;
-       --fall-speed: 10s;
-       --spin-speed: 9s;
-       --delay: -5s;
-       --drift1: -25px;
-       --drift2: 25px;
-       --drift3: -15px;
-       --drift4: 30px;">
-  </div>
-
-  <div class="snowflake"
-       style="
-       left: 65%;
-       --size: 40px;
-       --opacity: .9;
-       --fall-speed: 16s;
-       --spin-speed: 13s;
-       --delay: -13s;
-       --drift1: 35px;
-       --drift2: -20px;
-       --drift3: 30px;
-       --drift4: -25px;">
-  </div>
-
-  <div class="snowflake"
-       style="
-       left: 76%;
-       --size: 20px;
-       --opacity: .7;
-       --fall-speed: 12s;
-       --spin-speed: 8s;
-       --delay: -6s;
-       --drift1: -30px;
-       --drift2: 20px;
-       --drift3: -20px;
-       --drift4: 25px;">
-  </div>
-
-  <div class="snowflake"
-       style="
-       left: 87%;
-       --size: 34px;
        --opacity: .85;
-       --fall-speed: 14s;
-       --spin-speed: 11s;
+       --speed: 14s;
+       --rotation: 12s;
        --delay: -10s;
        --drift1: 25px;
-       --drift2: -30px;
+       --drift2: -25px;
        --drift3: 20px;
        --drift4: -15px;">
   </div>
 
+
+  <div class="snowflake"
+       style="
+       left: 53%;
+       --size: 22px;
+       --opacity: .7;
+       --speed: 11s;
+       --rotation: 9s;
+       --delay: -4s;
+       --drift1: -20px;
+       --drift2: 25px;
+       --drift3: -15px;
+       --drift4: 20px;">
+  </div>
+
+
+  <div class="snowflake"
+       style="
+       left: 64%;
+       --size: 38px;
+       --opacity: .9;
+       --speed: 16s;
+       --rotation: 14s;
+       --delay: -12s;
+       --drift1: 30px;
+       --drift2: -20px;
+       --drift3: 25px;
+       --drift4: -20px;">
+  </div>
+
+
+  <div class="snowflake"
+       style="
+       left: 75%;
+       --size: 19px;
+       --opacity: .65;
+       --speed: 12s;
+       --rotation: 8s;
+       --delay: -6s;
+       --drift1: -25px;
+       --drift2: 20px;
+       --drift3: -20px;
+       --drift4: 15px;">
+  </div>
+
+
+  <div class="snowflake"
+       style="
+       left: 86%;
+       --size: 32px;
+       --opacity: .85;
+       --speed: 14s;
+       --rotation: 11s;
+       --delay: -9s;
+       --drift1: 25px;
+       --drift2: -25px;
+       --drift3: 20px;
+       --drift4: -15px;">
+  </div>
+
+
   <div class="snowflake"
        style="
        left: 96%;
-       --size: 26px;
+       --size: 24px;
        --opacity: .75;
-       --fall-speed: 10s;
-       --spin-speed: 9s;
+       --speed: 10s;
+       --rotation: 9s;
        --delay: -3s;
        --drift1: -20px;
        --drift2: 25px;
-       --drift3: -30px;
+       --drift3: -15px;
        --drift4: 20px;">
   </div>
 
 </div>
 
+
+<!-- =========================
+     MAIN CARD
+     ========================= -->
+
 <div class="card">
 
-  <!-- Bakery Name -->
   <h1>BARTS BAKERY</h1>
+
 
   <!-- Main WhatsApp Channel -->
   <div class="button-section">
+
     <div class="buttons">
+
       <a href="#" id="button1">
         MAIN WHATSAPP CHANNEL
       </a>
+
     </div>
+
   </div>
+
 
   <!-- Collection / Deliveries -->
   <div class="button-section with-title">
@@ -545,12 +617,15 @@ h1 {
     </div>
 
     <div class="buttons">
+
       <a href="#" id="button2">
         COLLECTION / DELIVERIES
       </a>
+
     </div>
 
   </div>
+
 
   <!-- Postals / Collections / Deliveries -->
   <div class="button-section with-title">
@@ -560,14 +635,17 @@ h1 {
     </div>
 
     <div class="buttons">
+
       <a href="#" id="button3">
         POSTALS / COLLECTIONS / DELIVERIES
       </a>
+
     </div>
 
   </div>
 
 </div>
+
 
 </body>
 </html>
