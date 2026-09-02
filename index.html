@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,646 +6,505 @@
 
 <title>Barts Bakery</title>
 
-<!-- Simpsons-style fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&display=swap" rel="stylesheet">
 
 <style>
-
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html,
 body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
-  min-height: 100vh;
+    min-height: 100vh;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
 
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 
-  background-image: url("./Backround.jpg");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    background-image: url("./Backround.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 /* Dark overlay */
 body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
+    content: "";
+    position: fixed;
+    inset: 0;
 
-  background: rgba(0, 15, 25, 0.42);
+    background: rgba(0, 15, 25, 0.42);
 
-  z-index: 0;
-  pointer-events: none;
+    z-index: 0;
+    pointer-events: none;
 }
 
-/* =========================
+
+/* ==============================
    SNOW
-   ========================= */
+   ============================== */
 
 .snow {
-  position: fixed;
-  inset: 0;
+    position: fixed;
+    inset: 0;
 
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 
-  z-index: 1;
+    overflow: hidden;
 
-  pointer-events: none;
-
-  overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
 }
 
-/* Individual falling snow */
 .snowflake {
-  position: absolute;
+    position: absolute;
 
-  top: -100px;
+    top: -80px;
 
-  width: var(--size);
-  height: var(--size);
+    width: var(--size);
+    height: var(--size);
 
-  animation: fall var(--speed) linear infinite;
+    background-image: url("./snoweffect.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 
-  animation-delay: var(--delay);
+    opacity: var(--opacity);
 
-  will-change: transform;
+    animation-name: snowFall;
+    animation-duration: var(--speed);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-delay: var(--delay);
+
+    will-change: transform;
 }
 
-/* Snow image itself */
-.snowflake::after {
-  content: "";
+@keyframes snowFall {
 
-  position: absolute;
+    0% {
+        transform:
+            translate3d(0, -100px, 0)
+            rotate(0deg);
+    }
 
-  inset: 0;
+    20% {
+        transform:
+            translate3d(var(--move1), 20vh, 0)
+            rotate(72deg);
+    }
 
-  background-image: url("./snoweffect.png");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+    40% {
+        transform:
+            translate3d(var(--move2), 40vh, 0)
+            rotate(144deg);
+    }
 
-  opacity: var(--opacity);
+    60% {
+        transform:
+            translate3d(var(--move3), 60vh, 0)
+            rotate(216deg);
+    }
 
-  animation: rotateSnow var(--rotation) linear infinite;
+    80% {
+        transform:
+            translate3d(var(--move4), 80vh, 0)
+            rotate(288deg);
+    }
 
-  will-change: transform;
-}
-
-/* FALL FROM TOP TO BOTTOM */
-@keyframes fall {
-
-  0% {
-    transform: translate3d(0, -120px, 0);
-  }
-
-  25% {
-    transform: translate3d(var(--drift1), 25vh, 0);
-  }
-
-  50% {
-    transform: translate3d(var(--drift2), 50vh, 0);
-  }
-
-  75% {
-    transform: translate3d(var(--drift3), 75vh, 0);
-  }
-
-  100% {
-    transform: translate3d(var(--drift4), 115vh, 0);
-  }
-
-}
-
-/* SLOW CLOCKWISE SPIN */
-@keyframes rotateSnow {
-
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-
+    100% {
+        transform:
+            translate3d(var(--move5), 115vh, 0)
+            rotate(360deg);
+    }
 }
 
 
-/* =========================
+/* ==============================
    MAIN CARD
-   ========================= */
+   ============================== */
 
 .card {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
 
-  width: 90%;
-  max-width: 380px;
+    width: 90%;
+    max-width: 380px;
 
-  padding: 34px 28px 32px;
+    padding: 34px 28px 32px;
 
-  text-align: center;
-  color: #fff;
+    text-align: center;
+    color: #fff;
 
-  /* More transparent glass */
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 213, 0, 0.09),
-      rgba(0, 91, 130, 0.20)
-    );
+    /* More transparent glass */
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 213, 0, 0.08),
+            rgba(0, 91, 130, 0.18)
+        );
 
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 
-  border: 2px solid rgba(255, 213, 0, 0.55);
+    border: 2px solid rgba(255, 213, 0, 0.55);
 
-  border-radius: 26px;
+    border-radius: 26px;
 
-  box-shadow:
-    0 0 10px rgba(255, 213, 0, 0.35),
-    0 0 30px rgba(255, 213, 0, 0.18),
-    0 25px 50px rgba(0, 0, 0, 0.5);
+    box-shadow:
+        0 0 10px rgba(255, 213, 0, 0.35),
+        0 0 30px rgba(255, 213, 0, 0.18),
+        0 25px 50px rgba(0, 0, 0, 0.5);
 
-  animation: fadeIn 0.8s ease;
+    animation: fadeIn 0.8s ease;
 }
+
 
 /* Card glow */
 .card::before {
-  content: "";
+    content: "";
 
-  position: absolute;
+    position: absolute;
+    inset: -2px;
 
-  inset: -2px;
+    border-radius: 26px;
 
-  border-radius: 26px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 213, 0, 0.4),
+            transparent 40%,
+            rgba(0, 180, 220, 0.25)
+        );
 
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 213, 0, 0.4),
-      transparent 40%,
-      rgba(0, 180, 220, 0.25)
-    );
+    z-index: -1;
 
-  z-index: -1;
-
-  filter: blur(10px);
+    filter: blur(10px);
 }
 
-/* Card animation */
+
 @keyframes fadeIn {
 
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
-/* =========================
-   BAKERY NAME
-   ========================= */
+/* ==============================
+   BAKERY TITLE
+   ============================== */
 
 h1 {
-  margin: 0 0 30px;
+    margin: 0 0 30px;
 
-  font-family:
-    "Luckiest Guy",
-    "Bangers",
-    Impact,
-    sans-serif;
+    font-family:
+        "Luckiest Guy",
+        "Bangers",
+        Impact,
+        sans-serif;
 
-  font-size: 36px;
+    font-size: 36px;
 
-  font-weight: 400;
+    font-weight: 400;
 
-  letter-spacing: 1px;
+    letter-spacing: 1px;
 
-  color: #ffd800;
+    color: #ffd800;
 
-  -webkit-text-stroke: 1.5px #111;
+    -webkit-text-stroke: 1.5px #111;
 
-  text-shadow:
-    3px 3px 0 #111,
-    0 0 8px rgba(255, 216, 0, 0.65),
-    0 0 18px rgba(255, 216, 0, 0.3);
+    text-shadow:
+        3px 3px 0 #111,
+        0 0 8px rgba(255, 216, 0, 0.65),
+        0 0 18px rgba(255, 216, 0, 0.3);
 }
 
 
-/* =========================
+/* ==============================
    BUTTON SECTIONS
-   ========================= */
+   ============================== */
 
 .button-section {
-  margin-bottom: 24px;
+    margin-bottom: 24px;
 }
 
 .button-section:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 .button-section.with-title {
-  margin-top: 8px;
-  margin-bottom: 30px;
+    margin-top: 8px;
+    margin-bottom: 30px;
 }
 
 
 /* Section titles */
 .section-title {
-  margin: 0 0 13px;
+    margin: 0 0 13px;
 
-  font-family:
-    "Bangers",
-    Impact,
-    sans-serif;
+    font-family:
+        "Bangers",
+        Impact,
+        sans-serif;
 
-  font-size: 16px;
+    font-size: 16px;
 
-  font-weight: 400;
+    font-weight: 400;
 
-  letter-spacing: 1.5px;
+    letter-spacing: 1.5px;
 
-  color: #ffd800;
+    color: #ffd800;
 
-  text-shadow:
-    2px 2px 0 #111,
-    0 0 7px rgba(255, 216, 0, 0.5);
+    text-shadow:
+        2px 2px 0 #111,
+        0 0 7px rgba(255, 216, 0, 0.5);
 }
 
 
-/* =========================
+/* ==============================
    BUTTONS
-   ========================= */
+   ============================== */
 
 .buttons a {
-  display: block;
+    display: block;
 
-  width: 100%;
+    width: 100%;
 
-  padding: 16px 14px;
+    padding: 16px 14px;
 
-  border-radius: 17px;
+    border-radius: 17px;
 
-  background:
-    linear-gradient(
-      180deg,
-      #fffdf0 0%,
-      #fff 100%
-    );
+    background:
+        linear-gradient(
+            180deg,
+            #fffdf0 0%,
+            #fff 100%
+        );
 
-  color: #111;
+    color: #111;
 
-  text-decoration: none;
+    text-decoration: none;
 
-  font-family:
-    "Luckiest Guy",
-    "Bangers",
-    Impact,
-    sans-serif;
+    font-family:
+        "Luckiest Guy",
+        "Bangers",
+        Impact,
+        sans-serif;
 
-  font-size: 18px;
+    font-size: 18px;
 
-  font-weight: 400;
+    font-weight: 400;
 
-  letter-spacing: 0.5px;
+    letter-spacing: 0.5px;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  border: 2px solid rgba(255, 213, 0, 0.9);
+    border: 2px solid rgba(255, 213, 0, 0.9);
 
-  box-shadow:
-    0 5px 0 #c5a900,
-    0 8px 20px rgba(0, 0, 0, 0.3),
-    0 0 12px rgba(255, 213, 0, 0.3);
+    box-shadow:
+        0 5px 0 #c5a900,
+        0 8px 20px rgba(0, 0, 0, 0.3),
+        0 0 12px rgba(255, 213, 0, 0.3);
 
-  transition:
-    transform 0.12s ease,
-    box-shadow 0.12s ease,
-    background 0.2s ease;
+    transition:
+        transform 0.12s ease,
+        box-shadow 0.12s ease,
+        background 0.2s ease;
 }
 
 
 /* Hover */
 .buttons a:hover {
+    background: #fff8c9;
 
-  background: #fff8c9;
+    transform: translateY(-2px);
 
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 7px 0 #c5a900,
-    0 12px 25px rgba(0, 0, 0, 0.35),
-    0 0 20px rgba(255, 213, 0, 0.6);
+    box-shadow:
+        0 7px 0 #c5a900,
+        0 12px 25px rgba(0, 0, 0, 0.35),
+        0 0 20px rgba(255, 213, 0, 0.6);
 }
 
 
 /* Click */
 .buttons a:active {
+    transform: translateY(3px);
 
-  transform: translateY(3px);
-
-  box-shadow:
-    0 2px 0 #c5a900,
-    0 5px 12px rgba(0, 0, 0, 0.25);
+    box-shadow:
+        0 2px 0 #c5a900,
+        0 5px 12px rgba(0, 0, 0, 0.25);
 }
 
 
-/* =========================
+/* ==============================
    MOBILE
-   ========================= */
+   ============================== */
 
 @media (max-width: 480px) {
 
-  body {
-    background-attachment: scroll;
-  }
+    body {
+        background-attachment: scroll;
+    }
 
-  .card {
+    .card {
+        width: 90%;
 
-    width: 90%;
+        padding: 30px 22px 28px;
 
-    padding: 30px 22px 28px;
+        border-radius: 24px;
+    }
 
-    border-radius: 24px;
-  }
+    h1 {
+        font-size: 32px;
 
-  h1 {
+        margin-bottom: 27px;
+    }
 
-    font-size: 32px;
+    .section-title {
+        font-size: 15px;
 
-    margin-bottom: 27px;
-  }
+        margin-bottom: 14px;
+    }
 
-  .section-title {
+    .button-section.with-title {
+        margin-bottom: 28px;
+    }
 
-    font-size: 15px;
+    .buttons a {
+        padding: 15px 12px;
 
-    margin-bottom: 14px;
-  }
-
-  .button-section.with-title {
-
-    margin-bottom: 28px;
-  }
-
-  .buttons a {
-
-    padding: 15px 12px;
-
-    font-size: 17px;
-  }
-
+        font-size: 17px;
+    }
 }
-
 </style>
 </head>
 
 <body>
 
-
-<!-- =========================
-     SNOW EFFECT
-     ========================= -->
-
+<!-- SNOW LAYER -->
 <div class="snow">
 
-  <div class="snowflake"
-       style="
-       left: 2%;
-       --size: 28px;
-       --opacity: .8;
-       --speed: 12s;
-       --rotation: 10s;
-       --delay: -2s;
-       --drift1: 25px;
-       --drift2: -15px;
-       --drift3: 20px;
-       --drift4: -10px;">
-  </div>
+    <div class="snowflake"
+         style="left: 2%; --size: 26px; --opacity: .80; --speed: 12s; --delay: -3s; --move1: 25px; --move2: -15px; --move3: 20px; --move4: -10px; --move5: 15px;">
+    </div>
 
+    <div class="snowflake"
+         style="left: 11%; --size: 19px; --opacity: .65; --speed: 15s; --delay: -8s; --move1: -20px; --move2: 25px; --move3: -15px; --move4: 20px; --move5: -10px;">
+    </div>
 
-  <div class="snowflake"
-       style="
-       left: 11%;
-       --size: 20px;
-       --opacity: .65;
-       --speed: 15s;
-       --rotation: 13s;
-       --delay: -8s;
-       --drift1: -20px;
-       --drift2: 25px;
-       --drift3: -15px;
-       --drift4: 20px;">
-  </div>
+    <div class="snowflake"
+         style="left: 20%; --size: 34px; --opacity: .90; --speed: 13s; --delay: -5s; --move1: 30px; --move2: -20px; --move3: 25px; --move4: -15px; --move5: 20px;">
+    </div>
 
+    <div class="snowflake"
+         style="left: 30%; --size: 18px; --opacity: .65; --speed: 10s; --delay: -7s; --move1: -25px; --move2: 20px; --move3: -20px; --move4: 15px; --move5: -10px;">
+    </div>
 
-  <div class="snowflake"
-       style="
-       left: 21%;
-       --size: 34px;
-       --opacity: .9;
-       --speed: 13s;
-       --rotation: 11s;
-       --delay: -5s;
-       --drift1: 30px;
-       --drift2: -20px;
-       --drift3: 25px;
-       --drift4: -15px;">
-  </div>
+    <div class="snowflake"
+         style="left: 40%; --size: 29px; --opacity: .85; --speed: 14s; --delay: -10s; --move1: 25px; --move2: -25px; --move3: 20px; --move4: -15px; --move5: 20px;">
+    </div>
 
+    <div class="snowflake"
+         style="left: 51%; --size: 22px; --opacity: .70; --speed: 11s; --delay: -4s; --move1: -20px; --move2: 25px; --move3: -15px; --move4: 20px; --move5: -15px;">
+    </div>
 
-  <div class="snowflake"
-       style="
-       left: 31%;
-       --size: 18px;
-       --opacity: .65;
-       --speed: 10s;
-       --rotation: 8s;
-       --delay: -7s;
-       --drift1: -25px;
-       --drift2: 20px;
-       --drift3: -20px;
-       --drift4: 15px;">
-  </div>
+    <div class="snowflake"
+         style="left: 62%; --size: 37px; --opacity: .90; --speed: 16s; --delay: -12s; --move1: 30px; --move2: -20px; --move3: 25px; --move4: -20px; --move5: 15px;">
+    </div>
 
+    <div class="snowflake"
+         style="left: 73%; --size: 19px; --opacity: .65; --speed: 12s; --delay: -6s; --move1: -25px; --move2: 20px; --move3: -20px; --move4: 15px; --move5: -15px;">
+    </div>
 
-  <div class="snowflake"
-       style="
-       left: 42%;
-       --size: 30px;
-       --opacity: .85;
-       --speed: 14s;
-       --rotation: 12s;
-       --delay: -10s;
-       --drift1: 25px;
-       --drift2: -25px;
-       --drift3: 20px;
-       --drift4: -15px;">
-  </div>
+    <div class="snowflake"
+         style="left: 84%; --size: 31px; --opacity: .85; --speed: 14s; --delay: -9s; --move1: 25px; --move2: -25px; --move3: 20px; --move4: -15px; --move5: 20px;">
+    </div>
 
-
-  <div class="snowflake"
-       style="
-       left: 53%;
-       --size: 22px;
-       --opacity: .7;
-       --speed: 11s;
-       --rotation: 9s;
-       --delay: -4s;
-       --drift1: -20px;
-       --drift2: 25px;
-       --drift3: -15px;
-       --drift4: 20px;">
-  </div>
-
-
-  <div class="snowflake"
-       style="
-       left: 64%;
-       --size: 38px;
-       --opacity: .9;
-       --speed: 16s;
-       --rotation: 14s;
-       --delay: -12s;
-       --drift1: 30px;
-       --drift2: -20px;
-       --drift3: 25px;
-       --drift4: -20px;">
-  </div>
-
-
-  <div class="snowflake"
-       style="
-       left: 75%;
-       --size: 19px;
-       --opacity: .65;
-       --speed: 12s;
-       --rotation: 8s;
-       --delay: -6s;
-       --drift1: -25px;
-       --drift2: 20px;
-       --drift3: -20px;
-       --drift4: 15px;">
-  </div>
-
-
-  <div class="snowflake"
-       style="
-       left: 86%;
-       --size: 32px;
-       --opacity: .85;
-       --speed: 14s;
-       --rotation: 11s;
-       --delay: -9s;
-       --drift1: 25px;
-       --drift2: -25px;
-       --drift3: 20px;
-       --drift4: -15px;">
-  </div>
-
-
-  <div class="snowflake"
-       style="
-       left: 96%;
-       --size: 24px;
-       --opacity: .75;
-       --speed: 10s;
-       --rotation: 9s;
-       --delay: -3s;
-       --drift1: -20px;
-       --drift2: 25px;
-       --drift3: -15px;
-       --drift4: 20px;">
-  </div>
+    <div class="snowflake"
+         style="left: 95%; --size: 24px; --opacity: .75; --speed: 10s; --delay: -2s; --move1: -20px; --move2: 25px; --move3: -15px; --move4: 20px; --move5: -10px;">
+    </div>
 
 </div>
 
 
-<!-- =========================
-     MAIN CARD
-     ========================= -->
-
+<!-- MAIN CARD -->
 <div class="card">
 
-  <h1>BARTS BAKERY</h1>
+    <h1>BARTS BAKERY</h1>
 
 
-  <!-- Main WhatsApp Channel -->
-  <div class="button-section">
+    <!-- Main WhatsApp Channel -->
+    <div class="button-section">
 
-    <div class="buttons">
+        <div class="buttons">
 
-      <a href="#" id="button1">
-        MAIN WHATSAPP CHANNEL
-      </a>
+            <a href="#" id="button1">
+                MAIN WHATSAPP CHANNEL
+            </a>
 
-    </div>
-
-  </div>
-
-
-  <!-- Collection / Deliveries -->
-  <div class="button-section with-title">
-
-    <div class="section-title">
-      COLLECTION / DELIVERIES
-    </div>
-
-    <div class="buttons">
-
-      <a href="#" id="button2">
-        COLLECTION / DELIVERIES
-      </a>
+        </div>
 
     </div>
 
-  </div>
 
+    <!-- Collection / Deliveries -->
+    <div class="button-section with-title">
 
-  <!-- Postals / Collections / Deliveries -->
-  <div class="button-section with-title">
+        <div class="section-title">
+            COLLECTION / DELIVERIES
+        </div>
 
-    <div class="section-title">
-      POSTALS / COLLECTIONS / DELIVERIES
+        <div class="buttons">
+
+            <a href="#" id="button2">
+                COLLECTION / DELIVERIES
+            </a>
+
+        </div>
+
     </div>
 
-    <div class="buttons">
 
-      <a href="#" id="button3">
-        POSTALS / COLLECTIONS / DELIVERIES
-      </a>
+    <!-- Postals / Collections / Deliveries -->
+    <div class="button-section with-title">
+
+        <div class="section-title">
+            POSTALS / COLLECTIONS / DELIVERIES
+        </div>
+
+        <div class="buttons">
+
+            <a href="#" id="button3">
+                POSTALS / COLLECTIONS / DELIVERIES
+            </a>
+
+        </div>
 
     </div>
-
-  </div>
 
 </div>
-
 
 </body>
 </html>
-```
