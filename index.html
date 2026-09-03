@@ -1,5 +1,5 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&display=swap" rel="stylesheet">
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -51,7 +52,9 @@ body::before {
 }
 
 
-/* SNOW */
+/* ==============================
+   SNOW
+   ============================== */
 
 .snow {
     position: fixed;
@@ -87,6 +90,7 @@ body::before {
 }
 
 @keyframes snowFall {
+
     0% {
         transform: translate3d(0, -100px, 0) rotate(0deg);
     }
@@ -113,7 +117,9 @@ body::before {
 }
 
 
-/* MAIN CARD */
+/* ==============================
+   MAIN CARD
+   ============================== */
 
 .card {
     position: relative;
@@ -166,6 +172,7 @@ body::before {
 }
 
 @keyframes fadeIn {
+
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -178,7 +185,9 @@ body::before {
 }
 
 
-/* TITLE */
+/* ==============================
+   TITLE
+   ============================== */
 
 .title-row {
     display: flex;
@@ -262,6 +271,7 @@ h1 {
 }
 
 @keyframes logoGlow {
+
     0% {
         opacity: 0.3;
         transform: scale(0.9);
@@ -279,7 +289,9 @@ h1 {
 }
 
 
-/* SECTIONS */
+/* ==============================
+   SECTIONS
+   ============================== */
 
 .button-section {
     margin-bottom: 24px;
@@ -291,7 +303,9 @@ h1 {
 }
 
 
-/* SECTION TITLES */
+/* ==============================
+   SECTION TITLES
+   ============================== */
 
 .section-title {
     margin: 0 0 13px;
@@ -314,7 +328,14 @@ h1 {
 }
 
 
-/* BUTTONS */
+/* ==============================
+   BUTTONS
+   ============================== */
+
+.buttons {
+    width: 100%;
+    position: relative;
+}
 
 .buttons a {
     display: block;
@@ -381,7 +402,9 @@ h1 {
 }
 
 
-/* WHATSAPP BUTTON */
+/* ==============================
+   WHATSAPP BUTTON
+   ============================== */
 
 .whatsapp-button {
     display: flex !important;
@@ -402,10 +425,14 @@ h1 {
     min-height: 23px;
 
     object-fit: contain;
+
+    flex-shrink: 0;
 }
 
 
-/* BOTTOM NOTE */
+/* ==============================
+   BOTTOM NOTE
+   ============================== */
 
 .bottom-note {
     margin-top: 25px;
@@ -432,7 +459,9 @@ h1 {
 }
 
 
-/* MOBILE */
+/* ==============================
+   MOBILE
+   ============================== */
 
 @media (max-width: 480px) {
 
@@ -499,169 +528,149 @@ h1 {
         line-height: 1.45;
     }
 }
+
 </style>
+
 </head>
 
 <body>
 
 <div class="snow">
 
-    <div class="snowflake"
-        style="left:2%;--size:29px;--opacity:.80;--speed:12s;--delay:-3s;--move1:25px;--move2:-15px;--move3:20px;--move4:-10px;--move5:15px;">
-    </div>
+```
+<div class="snowflake" style="left:2%;--size:29px;--opacity:.80;--speed:12s;--delay:-3s;--move1:25px;--move2:-15px;--move3:20px;--move4:-10px;--move5:15px;"></div>
 
-    <div class="snowflake"
-        style="left:11%;--size:22px;--opacity:.65;--speed:15s;--delay:-8s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-10px;">
-    </div>
+<div class="snowflake" style="left:11%;--size:22px;--opacity:.65;--speed:15s;--delay:-8s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-10px;"></div>
 
-    <div class="snowflake"
-        style="left:20%;--size:38px;--opacity:.90;--speed:13s;--delay:-5s;--move1:30px;--move2:-20px;--move3:25px;--move4:-15px;--move5:20px;">
-    </div>
+<div class="snowflake" style="left:20%;--size:38px;--opacity:.90;--speed:13s;--delay:-5s;--move1:30px;--move2:-20px;--move3:25px;--move4:-15px;--move5:20px;"></div>
 
-    <div class="snowflake"
-        style="left:30%;--size:21px;--opacity:.65;--speed:10s;--delay:-7s;--move1:-25px;--move2:20px;--move3:-20px;--move4:15px;--move5:-10px;">
-    </div>
+<div class="snowflake" style="left:30%;--size:21px;--opacity:.65;--speed:10s;--delay:-7s;--move1:-25px;--move2:20px;--move3:-20px;--move4:15px;--move5:-10px;"></div>
 
-    <div class="snowflake"
-        style="left:40%;--size:33px;--opacity:.85;--speed:14s;--delay:-10s;--move1:25px;--move2:-25px;--move3:20px;--move4:-15px;--move5:20px;">
-    </div>
+<div class="snowflake" style="left:40%;--size:33px;--opacity:.85;--speed:14s;--delay:-10s;--move1:25px;--move2:-25px;--move3:20px;--move4:-15px;--move5:20px;"></div>
 
-    <div class="snowflake"
-        style="left:51%;--size:25px;--opacity:.70;--speed:11s;--delay:-4s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-15px;">
-    </div>
+<div class="snowflake" style="left:51%;--size:25px;--opacity:.70;--speed:11s;--delay:-4s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-15px;"></div>
 
-    <div class="snowflake"
-        style="left:62%;--size:42px;--opacity:.90;--speed:16s;--delay:-12s;--move1:30px;--move2:-20px;--move3:25px;--move4:-20px;--move5:15px;">
-    </div>
+<div class="snowflake" style="left:62%;--size:42px;--opacity:.90;--speed:16s;--delay:-12s;--move1:30px;--move2:-20px;--move3:25px;--move4:-20px;--move5:15px;"></div>
 
-    <div class="snowflake"
-        style="left:73%;--size:22px;--opacity:.65;--speed:12s;--delay:-6s;--move1:-25px;--move2:20px;--move3:-20px;--move4:15px;--move5:-15px;">
-    </div>
+<div class="snowflake" style="left:73%;--size:22px;--opacity:.65;--speed:12s;--delay:-6s;--move1:-25px;--move2:20px;--move3:-20px;--move4:15px;--move5:-15px;"></div>
 
-    <div class="snowflake"
-        style="left:84%;--size:35px;--opacity:.85;--speed:14s;--delay:-9s;--move1:25px;--move2:-25px;--move3:20px;--move4:-15px;--move5:20px;">
-    </div>
+<div class="snowflake" style="left:84%;--size:35px;--opacity:.85;--speed:14s;--delay:-9s;--move1:25px;--move2:-25px;--move3:20px;--move4:-15px;--move5:20px;"></div>
 
-    <div class="snowflake"
-        style="left:95%;--size:28px;--opacity:.75;--speed:10s;--delay:-2s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-10px;">
+<div class="snowflake" style="left:95%;--size:28px;--opacity:.75;--speed:10s;--delay:-2s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-10px;"></div>
+```
+
+</div>
+
+<div class="card">
+
+```
+<div class="title-row">
+
+    <h1>BARTS BAKERY</h1>
+
+    <div class="logo-container">
+        <img
+            src="./logo.png"
+            alt="Barts Bakery"
+            class="logo"
+        >
     </div>
 
 </div>
 
 
-<div class="card">
+<div class="button-section with-title">
 
-    <div class="title-row">
+    <div class="section-title">
+        REVIEWS / MENU
+    </div>
 
-        <h1>BARTS BAKERY</h1>
+    <div class="buttons">
 
-        <div class="logo-container">
+        <a
+            href="https://api.whatsapp.com/send/?phone=447522321054"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            MAIN WHATSAPP CHANNEL
+        </a>
 
+    </div>
+
+</div>
+
+
+<div class="button-section with-title">
+
+    <div class="section-title">
+        COLLECTION / DELIVERIES
+    </div>
+
+    <div class="buttons">
+
+        <a
+            class="whatsapp-button"
+            href="https://api.whatsapp.com/send/?phone=447522321054"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
             <img
-                src="./logo.png"
-                alt="Barts Bakery"
-                class="logo"
+                class="whatsapp-icon"
+                src="./logo3.png"
+                alt="WhatsApp"
             >
 
-        </div>
+            <span>+44 7522 321054</span>
+
+        </a>
 
     </div>
 
+</div>
 
-    <div class="button-section with-title">
 
-        <div class="section-title">
-            REVIEWS / MENU
-        </div>
+<div class="button-section with-title">
 
-        <div class="buttons">
-
-            <a
-                href="https://api.whatsapp.com/send/?phone=447522321054"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                MAIN WHATSAPP CHANNEL
-            </a>
-
-        </div>
-
+    <div class="section-title">
+        POSTALS / COLLECTIONS / DELIVERIES
     </div>
 
+    <div class="buttons">
 
-    <div class="button-section with-title">
-
-        <div class="section-title">
-            COLLECTION / DELIVERIES
-        </div>
-
-        <div class="buttons">
-
-            <a
-                class="whatsapp-button"
-                href="https://api.whatsapp.com/send/?phone=447522321054"
-                target="_blank"
-                rel="noopener noreferrer"
+        <a
+            class="whatsapp-button"
+            href="https://api.whatsapp.com/send/?phone=447724779151"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <img
+                class="whatsapp-icon"
+                src="./logo3.png"
+                alt="WhatsApp"
             >
 
-                <img
-                    class="whatsapp-icon"
-                    src="./logo3.png"
-                    alt="WhatsApp"
-                >
+            <span>+44 7724 779151</span>
 
-                <span>+44 7522 321054</span>
-
-            </a>
-
-        </div>
+        </a>
 
     </div>
 
-
-    <div class="button-section with-title">
-
-        <div class="section-title">
-            POSTALS / COLLECTIONS / DELIVERIES
-        </div>
-
-        <div class="buttons">
-
-            <a
-                class="whatsapp-button"
-                href="https://api.whatsapp.com/send/?phone=447724779151"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-
-                <img
-                    class="whatsapp-icon"
-                    src="./logo3.png"
-                    alt="WhatsApp"
-                >
-
-                <span>+44 7724 779151</span>
-
-            </a>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <div class="bottom-note">
+<div class="bottom-note">
 
-        Please message one of the numbers above on WhatsApp for the full menu and prices.
-        Menu can also be found in the WhatsApp channel posted daily.
+    Please message one of the numbers above on WhatsApp for the full menu and prices.
+    Menu can also be found in the WhatsApp channel posted daily.
 
-        <br><br>
+    <br><br>
 
-        If you do not have WhatsApp, please phone one of the numbers above directly.
+    If you do not have WhatsApp, please phone one of the numbers above directly.
 
-    </div>
+</div>
+```
 
 </div>
 
 </body>
 </html>
-```
