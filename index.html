@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -440,6 +441,29 @@ h1 {
 
 
 /* ==============================
+   WHATSAPP NUMBER BUTTON
+   ============================== */
+
+.whatsapp-button {
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.whatsapp-icon {
+    width: 23px;
+    height: 23px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+/* ==============================
    BOTTOM NOTE
    ============================== */
 
@@ -527,6 +551,11 @@ h1 {
         padding: 15px 12px;
 
         font-size: 17px;
+    }
+
+    .whatsapp-icon {
+        width: 21px;
+        height: 21px;
     }
 
     .bottom-note {
@@ -656,8 +685,15 @@ h1 {
                 href="https://api.whatsapp.com/send/?phone=447522321054"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="whatsapp-button"
             >
-                +44 7522 321054
+                <img
+                    src="./logo3.png"
+                    alt="WhatsApp"
+                    class="whatsapp-icon"
+                >
+
+                <span>+44 7522 321054</span>
             </a>
 
         </div>
@@ -679,8 +715,15 @@ h1 {
                 href="https://api.whatsapp.com/send/?phone=447724779151"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="whatsapp-button"
             >
-                +44 7724 779151
+                <img
+                    src="./logo3.png"
+                    alt="WhatsApp"
+                    class="whatsapp-icon"
+                >
+
+                <span>+44 7724 779151</span>
             </a>
 
         </div>
@@ -692,7 +735,7 @@ h1 {
 
     <div class="bottom-note">
 
-        Please message one of the numbers above for the full menu and prices.
+        Please message one of the numbers above on WhatsApp for the full menu and prices.
         Menu can also be found in the WhatsApp channel posted daily.
 
         <br><br>
@@ -707,3 +750,4 @@ h1 {
 
 </body>
 </html>
+```
