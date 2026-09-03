@@ -151,7 +151,7 @@ body::before {
     width: 90%;
     max-width: 380px;
 
-    padding: 34px 28px 32px;
+    padding: 34px 28px 30px;
 
     text-align: center;
     color: #fff;
@@ -178,8 +178,6 @@ body::before {
     animation: fadeIn 0.8s ease;
 }
 
-
-/* Card glow */
 .card::before {
     content: "";
 
@@ -200,7 +198,6 @@ body::before {
 
     filter: blur(10px);
 }
-
 
 @keyframes fadeIn {
 
@@ -226,15 +223,13 @@ body::before {
     align-items: center;
     justify-content: center;
 
-    gap: 8px;
+    gap: 9px;
 
     margin-bottom: 30px;
 
     position: relative;
 }
 
-
-/* Bakery Name */
 h1 {
     margin: 0;
 
@@ -264,11 +259,9 @@ h1 {
     white-space: nowrap;
 }
 
-
-/* Logo */
 .logo-container {
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
 
     flex-shrink: 0;
 
@@ -279,52 +272,51 @@ h1 {
     justify-content: center;
 }
 
-
-/* Faint yellow glow */
 .logo-container::before {
     content: "";
 
     position: absolute;
 
-    width: 42px;
-    height: 42px;
+    width: 58px;
+    height: 58px;
 
     border-radius: 50%;
 
-    background: rgba(255, 213, 0, 0.35);
+    background: rgba(255, 213, 0, 0.6);
 
-    filter: blur(12px);
+    filter: blur(15px);
 
     z-index: -1;
+
+    animation: logoGlow 3.5s ease-in-out infinite;
 }
 
-
-/* Actual logo */
 .logo {
-    width: 46px;
-    height: 46px;
+    width: 54px;
+    height: 54px;
 
     object-fit: contain;
 
-    border-radius: 50%;
-
-    animation: logoSpin 18s linear infinite;
-
     filter:
-        drop-shadow(0 0 4px rgba(255, 213, 0, 0.65))
-        drop-shadow(0 0 8px rgba(255, 213, 0, 0.3));
+        drop-shadow(0 0 5px rgba(255, 213, 0, 0.85))
+        drop-shadow(0 0 12px rgba(255, 213, 0, 0.5));
 }
 
+@keyframes logoGlow {
 
-/* Very slow clockwise rotation */
-@keyframes logoSpin {
-
-    from {
-        transform: rotate(0deg);
+    0% {
+        opacity: 0.3;
+        transform: scale(0.9);
     }
 
-    to {
-        transform: rotate(360deg);
+    50% {
+        opacity: 1;
+        transform: scale(1.08);
+    }
+
+    100% {
+        opacity: 0.3;
+        transform: scale(0.9);
     }
 }
 
@@ -337,7 +329,7 @@ h1 {
     margin-bottom: 24px;
 }
 
-.button-section:last-child {
+.button-section:last-of-type {
     margin-bottom: 0;
 }
 
@@ -421,9 +413,8 @@ h1 {
         background 0.2s ease;
 }
 
-
-/* Hover */
 .buttons a:hover {
+
     background: #fff8c9;
 
     transform: translateY(-2px);
@@ -434,14 +425,42 @@ h1 {
         0 0 20px rgba(255, 213, 0, 0.6);
 }
 
-
-/* Click */
 .buttons a:active {
+
     transform: translateY(3px);
 
     box-shadow:
         0 2px 0 #c5a900,
         0 5px 12px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ==============================
+   BOTTOM NOTE
+   ============================== */
+
+.bottom-note {
+    margin-top: 25px;
+    padding: 0 4px;
+
+    font-family:
+        "Bangers",
+        Impact,
+        sans-serif;
+
+    font-size: 13px;
+
+    line-height: 1.45;
+
+    letter-spacing: 0.7px;
+
+    color: #ffd800;
+
+    text-shadow:
+        1.5px 1.5px 0 #111,
+        0 0 6px rgba(255, 216, 0, 0.35);
+
+    opacity: 0.95;
 }
 
 
@@ -458,13 +477,13 @@ h1 {
     .card {
         width: 90%;
 
-        padding: 30px 22px 28px;
+        padding: 30px 22px 27px;
 
         border-radius: 24px;
     }
 
     .title-row {
-        gap: 6px;
+        gap: 7px;
 
         margin-bottom: 27px;
     }
@@ -476,18 +495,18 @@ h1 {
     }
 
     .logo-container {
-        width: 42px;
-        height: 42px;
+        width: 52px;
+        height: 52px;
     }
 
     .logo {
-        width: 40px;
-        height: 40px;
+        width: 49px;
+        height: 49px;
     }
 
     .logo-container::before {
-        width: 38px;
-        height: 38px;
+        width: 52px;
+        height: 52px;
     }
 
     .section-title {
@@ -504,6 +523,14 @@ h1 {
         padding: 15px 12px;
 
         font-size: 17px;
+    }
+
+    .bottom-note {
+        margin-top: 23px;
+
+        font-size: 12px;
+
+        line-height: 1.45;
     }
 }
 
@@ -568,14 +595,15 @@ h1 {
 
 <div class="card">
 
-    <!-- Title and Logo -->
+    <!-- BARTS BAKERY TITLE -->
+
     <div class="title-row">
 
         <h1>BARTS BAKERY</h1>
 
         <div class="logo-container">
             <img
-                src="./logo.jpg"
+                src="./logo.png"
                 alt=""
                 class="logo"
             >
@@ -584,12 +612,21 @@ h1 {
     </div>
 
 
-    <!-- Main WhatsApp Channel -->
-    <div class="button-section">
+    <!-- REVIEWS / MENU -->
+
+    <div class="button-section with-title">
+
+        <div class="section-title">
+            REVIEWS / MENU
+        </div>
 
         <div class="buttons">
 
-            <a href="#" id="button1">
+            <a
+                href="https://api.whatsapp.com/send/?phone=447522321054"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 MAIN WHATSAPP CHANNEL
             </a>
 
@@ -598,7 +635,8 @@ h1 {
     </div>
 
 
-    <!-- Collection / Deliveries -->
+    <!-- COLLECTION / DELIVERIES -->
+
     <div class="button-section with-title">
 
         <div class="section-title">
@@ -607,8 +645,12 @@ h1 {
 
         <div class="buttons">
 
-            <a href="#" id="button2">
-                COLLECTION / DELIVERIES
+            <a
+                href="https://api.whatsapp.com/send/?phone=447522321054"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                +44 7522 321054
             </a>
 
         </div>
@@ -616,7 +658,8 @@ h1 {
     </div>
 
 
-    <!-- Postals / Collections / Deliveries -->
+    <!-- POSTALS / COLLECTIONS / DELIVERIES -->
+
     <div class="button-section with-title">
 
         <div class="section-title">
@@ -625,15 +668,30 @@ h1 {
 
         <div class="buttons">
 
-            <a href="#" id="button3">
-                POSTALS / COLLECTIONS / DELIVERIES
+            <a
+                href="https://api.whatsapp.com/send/?phone=447724779151"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                +44 7724 779151
             </a>
 
         </div>
 
     </div>
 
+
+    <!-- BOTTOM NOTE -->
+
+    <div class="bottom-note">
+
+        Please message one of the numbers above for the full menu and prices.
+        Menu can also be found in the Whatsapp channel posted daily.
+
+    </div>
+
 </div>
+
 
 </body>
 </html>
