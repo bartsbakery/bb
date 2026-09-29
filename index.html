@@ -156,7 +156,20 @@ body::before {
         0 0 30px rgba(255, 213, 0, 0.18),
         0 25px 50px rgba(0, 0, 0, 0.5);
 
-    animation: fadeIn 0.8s ease;
+    animation: cardOpen 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+    clip-path: inset(50% 0 50% 0 round 26px);
+}
+
+@keyframes cardOpen {
+    0% {
+        opacity: 0;
+        clip-path: inset(50% 0 50% 0 round 26px);
+    }
+
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0 0 0 round 26px);
+    }
 }
 
 .card::before {
@@ -187,6 +200,82 @@ body::before {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+.card > * {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: contentReveal 0.55s ease forwards;
+}
+
+.card > .title-row {
+    animation-delay: 0.95s;
+}
+
+.card > .button-section:nth-of-type(1) {
+    animation-delay: 1.08s;
+}
+
+.card > .button-section:nth-of-type(2) {
+    animation-delay: 1.20s;
+}
+
+.card > .button-section:nth-of-type(3) {
+    animation-delay: 1.32s;
+}
+
+.card > .bottom-note {
+    animation-delay: 1.44s;
+}
+
+.buttons a {
+    opacity: 0;
+    transform: translateY(14px) scale(0.97);
+    animation: buttonReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    animation-delay: 1.45s;
+}
+
+.button-section:nth-of-type(2) .buttons a {
+    animation-delay: 1.58s;
+}
+
+.button-section:nth-of-type(3) .buttons a {
+    animation-delay: 1.71s;
+}
+
+@keyframes contentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes buttonReveal {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card,
+    .card > *,
+    .buttons a {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        clip-path: none !important;
     }
 }
 
