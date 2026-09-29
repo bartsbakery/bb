@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Barts Bakery</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&display=swap" rel="stylesheet">
 
+
 <style>
+
+/* ==============================
+   GENERAL
+   ============================== */
 
 * {
     box-sizing: border-box;
@@ -26,6 +36,7 @@ body {
 
 body {
     min-height: 100vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,6 +59,7 @@ body {
 
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
 
@@ -65,15 +77,19 @@ body::before {
 .snow {
     position: fixed;
     inset: 0;
+
     width: 100%;
     height: 100%;
+
     overflow: hidden;
+
     z-index: 1;
     pointer-events: none;
 }
 
 .snowflake {
     position: absolute;
+
     top: -80px;
 
     width: var(--size);
@@ -156,24 +172,19 @@ body::before {
         0 0 30px rgba(255, 213, 0, 0.18),
         0 25px 50px rgba(0, 0, 0, 0.5);
 
-    animation: cardOpen 1.05s cubic-bezier(0.22, 1, 0.36, 1) both;
-    clip-path: inset(50% 0 50% 0 round 26px);
+    animation: cardOpen 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+    transform-origin: center;
 }
 
-@keyframes cardOpen {
-    0% {
-        opacity: 0;
-        clip-path: inset(50% 0 50% 0 round 26px);
-    }
 
-    100% {
-        opacity: 1;
-        clip-path: inset(0 0 0 0 round 26px);
-    }
-}
+/* ==============================
+   CARD GLOW
+   ============================== */
 
 .card::before {
     content: "";
+
     position: absolute;
     inset: -2px;
 
@@ -190,61 +201,61 @@ body::before {
     filter: blur(10px);
 }
 
-@keyframes fadeIn {
 
-    from {
+/* ==============================
+   CARD OPEN ANIMATION
+   ============================== */
+
+@keyframes cardOpen {
+
+    0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform:
+            scaleY(0.03)
+            scaleX(0.92);
+        clip-path: inset(49% 0 49% 0 round 26px);
     }
 
-    to {
+    25% {
         opacity: 1;
-        transform: translateY(0);
+        transform:
+            scaleY(0.18)
+            scaleX(0.96);
+        clip-path: inset(40% 0 40% 0 round 26px);
+    }
+
+    55% {
+        transform:
+            scaleY(0.62)
+            scaleX(0.99);
+        clip-path: inset(19% 0 19% 0 round 26px);
+    }
+
+    100% {
+        opacity: 1;
+        transform:
+            scaleY(1)
+            scaleX(1);
+        clip-path: inset(0 0 0 0 round 26px);
     }
 }
+
+
+/* ==============================
+   CONTENT REVEAL
+   ============================== */
 
 .card > * {
     opacity: 0;
-    transform: translateY(12px);
-    animation: contentReveal 0.55s ease forwards;
-}
 
-.card > .title-row {
-    animation-delay: 0.95s;
-}
+    animation:
+        contentReveal 0.65s ease forwards;
 
-.card > .button-section:nth-of-type(1) {
-    animation-delay: 1.08s;
-}
-
-.card > .button-section:nth-of-type(2) {
-    animation-delay: 1.20s;
-}
-
-.card > .button-section:nth-of-type(3) {
-    animation-delay: 1.32s;
-}
-
-.card > .bottom-note {
-    animation-delay: 1.44s;
-}
-
-.buttons a {
-    opacity: 0;
-    transform: translateY(14px) scale(0.97);
-    animation: buttonReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-    animation-delay: 1.45s;
-}
-
-.button-section:nth-of-type(2) .buttons a {
-    animation-delay: 1.58s;
-}
-
-.button-section:nth-of-type(3) .buttons a {
-    animation-delay: 1.71s;
+    animation-delay: 0.85s;
 }
 
 @keyframes contentReveal {
+
     from {
         opacity: 0;
         transform: translateY(12px);
@@ -253,29 +264,6 @@ body::before {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-@keyframes buttonReveal {
-    from {
-        opacity: 0;
-        transform: translateY(14px) scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .card,
-    .card > *,
-    .buttons a {
-        animation: none !important;
-        opacity: 1 !important;
-        transform: none !important;
-        clip-path: none !important;
     }
 }
 
@@ -450,8 +438,10 @@ h1 {
 }
 
 @keyframes purpleGlow {
+
     0%, 100% {
         opacity: 0.65;
+
         text-shadow:
             0 0 3px rgba(124, 252, 0, 0.35),
             0 0 6px rgba(124, 252, 0, 0.2);
@@ -459,11 +449,13 @@ h1 {
 
     50% {
         opacity: 1;
+
         text-shadow:
             0 0 5px rgba(124, 252, 0, 0.65),
             0 0 10px rgba(124, 252, 0, 0.35);
     }
 }
+
 
 .red-note {
     margin: -5px 0 12px;
@@ -488,8 +480,10 @@ h1 {
 }
 
 @keyframes redGlow {
+
     0%, 100% {
         opacity: 0.65;
+
         text-shadow:
             0 0 3px rgba(255, 59, 59, 0.35),
             0 0 6px rgba(255, 59, 59, 0.2);
@@ -497,6 +491,7 @@ h1 {
 
     50% {
         opacity: 1;
+
         text-shadow:
             0 0 5px rgba(255, 59, 59, 0.65),
             0 0 10px rgba(255, 59, 59, 0.35);
@@ -557,6 +552,33 @@ h1 {
         box-shadow 0.12s ease,
         background 0.2s ease;
 }
+
+
+/* BUTTON REVEAL */
+
+.buttons a {
+    animation:
+        buttonReveal 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+
+    opacity: 0;
+    transform: translateY(18px) scale(0.94);
+
+    animation-delay: 1.15s;
+}
+
+@keyframes buttonReveal {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 
 .buttons a:hover {
     background: #fff8c9;
@@ -647,7 +669,9 @@ h1 {
 
     .card {
         width: 90%;
+
         padding: 30px 22px 27px;
+
         border-radius: 24px;
     }
 
@@ -664,6 +688,7 @@ h1 {
     .logo-container {
         width: 52px;
         height: 52px;
+
         isolation: isolate;
     }
 
@@ -711,160 +736,198 @@ h1 {
     }
 }
 
+
+/* ==============================
+   REDUCED MOTION
+   ============================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .card,
+    .card > *,
+    .buttons a,
+    .snowflake {
+        animation: none !important;
+    }
+
+    .card {
+        opacity: 1;
+        transform: none;
+        clip-path: none;
+    }
+
+    .card > *,
+    .buttons a {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 </style>
 
 </head>
 
+
 <body>
+
 
 <div class="snow">
 
-<div class="snowflake" style="left:2%;--size:29px;--opacity:.80;--speed:12s;--delay:-3s;--move1:25px;--move2:-15px;--move3:20px;--move4:-10px;--move5:15px;"></div>
+    <div class="snowflake" style="left:2%;--size:29px;--opacity:.80;--speed:12s;--delay:-3s;--move1:25px;--move2:-15px;--move3:20px;--move4:-10px;--move5:15px;"></div>
 
-<div class="snowflake" style="left:11%;--size:22px;--opacity:.65;--speed:15s;--delay:-8s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-10px;"></div>
+    <div class="snowflake" style="left:11%;--size:22px;--opacity:.65;--speed:15s;--delay:-8s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-10px;"></div>
 
-<div class="snowflake" style="left:20%;--size:38px;--opacity:.90;--speed:13s;--delay:-5s;--move1:30px;--move2:-20px;--move3:25px;--move4:-15px;--move5:20px;"></div>
+    <div class="snowflake" style="left:20%;--size:38px;--opacity:.90;--speed:13s;--delay:-5s;--move1:30px;--move2:-20px;--move3:25px;--move4:-15px;--move5:20px;"></div>
 
-<div class="snowflake" style="left:30%;--size:21px;--opacity:.65;--speed:10s;--delay:-7s;--move1:-25px;--move2:20px;--move3:-20px;--move4:15px;--move5:-10px;"></div>
+    <div class="snowflake" style="left:30%;--size:21px;--opacity:.65;--speed:10s;--delay:-7s;--move1:-25px;--move2:20px;--move3:-20px;--move4:15px;--move5:-10px;"></div>
 
-<div class="snowflake" style="left:40%;--size:33px;--opacity:.85;--speed:14s;--delay:-10s;--move1:25px;--move2:-25px;--move3:20px;--move4:-15px;--move5:20px;"></div>
+    <div class="snowflake" style="left:40%;--size:33px;--opacity:.85;--speed:14s;--delay:-10s;--move1:25px;--move2:-25px;--move3:20px;--move4:-15px;--move5:20px;"></div>
 
-<div class="snowflake" style="left:51%;--size:25px;--opacity:.70;--speed:11s;--delay:-4s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-15px;"></div>
+    <div class="snowflake" style="left:51%;--size:25px;--opacity:.70;--speed:11s;--delay:-4s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-15px;"></div>
 
-<div class="snowflake" style="left:62%;--size:42px;--opacity:.90;--speed:16s;--delay:-12s;--move1:30px;--move2:-20px;--move3:25px;--move4:-20px;--move5:15px;"></div>
+    <div class="snowflake" style="left:62%;--size:42px;--opacity:.90;--speed:16s;--delay:-12s;--move1:30px;--move2:-20px;--move3:25px;--move4:-20px;--move5:15px;"></div>
 
-<div class="snowflake" style="left:73%;--size:22px;--opacity:.65;--speed:12s;--delay:-6s;--move1:-25px;--move2:20px;--move3:-20px;--move4:15px;--move5:-15px;"></div>
+    <div class="snowflake" style="left:73%;--size:22px;--opacity:.65;--speed:12s;--delay:-6s;--move1:-25px;--move2:20px;--move3:-20px;--move4:15px;--move5:-15px;"></div>
 
-<div class="snowflake" style="left:84%;--size:35px;--opacity:.85;--speed:14s;--delay:-9s;--move1:25px;--move2:-25px;--move3:20px;--move4:-15px;--move5:20px;"></div>
+    <div class="snowflake" style="left:84%;--size:35px;--opacity:.85;--speed:14s;--delay:-9s;--move1:25px;--move2:-25px;--move3:20px;--move4:-15px;--move5:20px;"></div>
 
-<div class="snowflake" style="left:95%;--size:28px;--opacity:.75;--speed:10s;--delay:-2s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-10px;"></div>
+    <div class="snowflake" style="left:95%;--size:28px;--opacity:.75;--speed:10s;--delay:-2s;--move1:-20px;--move2:25px;--move3:-15px;--move4:20px;--move5:-10px;"></div>
 
 </div>
+
 
 <div class="card">
 
-<div class="title-row">
 
-    <h1>BARTS BAKERY</h1>
+    <div class="title-row">
 
-    <div class="logo-container">
-        <img
-            src="./logo.png"
-            alt="Barts Bakery"
-            class="logo"
-        >
-    </div>
+        <h1>BARTS BAKERY</h1>
 
-</div>
+        <div class="logo-container">
 
-
-<div class="button-section with-title">
-
-    <div class="section-title">
-        VISUALS / MENU
-    </div>
-
-    <div class="small-purple-note">
-        (please message us directly to join the whatsapp channel)
-    </div>
-
-    <div class="buttons">
-
-        <a
-            href="https://api.whatsapp.com/send/?phone=447417328618"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            MAIN WHATSAPP CHANNEL
-        </a>
-
-    </div>
-
-</div>
-
-
-<div class="button-section with-title">
-
-    <div class="section-title">
-        COLLECTION / DELIVERIES
-    </div>
-
-    <div class="small-purple-note">
-        (Open 24H Monday-Sunday)
-    </div>
-
-    <div class="buttons">
-
-        <a
-            class="whatsapp-button"
-            href="https://api.whatsapp.com/send/?phone=447522321054"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
             <img
-                class="whatsapp-icon"
-                src="./logo3.png"
-                alt="WhatsApp"
+                src="./logo.png"
+                alt="Barts Bakery"
+                class="logo"
             >
 
-            <span>+44 7522 321054</span>
-
-        </a>
+        </div>
 
     </div>
 
-</div>
 
+    <div class="button-section with-title">
 
-<div class="button-section with-title">
+        <div class="section-title">
+            VISUALS / MENU
+        </div>
 
-    <div class="section-title">
-        DELIVERIES / POSTALS / COLLECTIONS
+        <div class="small-purple-note">
+            (please message us directly to join the whatsapp channel)
+        </div>
+
+        <div class="buttons">
+
+            <a
+                href="https://api.whatsapp.com/send/?phone=447417328618"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                MAIN WHATSAPP CHANNEL
+            </a>
+
+        </div>
+
     </div>
 
-    <div class="small-purple-note">
-        (Open 24H Monday-Sunday)
-    </div>
 
-    <div class="red-note">
-        (If the number above does not respond, please contact the number below)
-    </div>
+    <div class="button-section with-title">
 
-    <div class="buttons">
+        <div class="section-title">
+            COLLECTION / DELIVERIES
+        </div>
 
-        <a
-            class="whatsapp-button"
-            href="https://api.whatsapp.com/send/?phone=447417328618"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            <img
-                class="whatsapp-icon"
-                src="./logo3.png"
-                alt="WhatsApp"
+        <div class="small-purple-note">
+            (Open 24H Monday-Sunday)
+        </div>
+
+        <div class="buttons">
+
+            <a
+                class="whatsapp-button"
+                href="https://api.whatsapp.com/send/?phone=447522321054"
+                target="_blank"
+                rel="noopener noreferrer"
             >
 
-            <span>+44 7417 328618</span>
+                <img
+                    class="whatsapp-icon"
+                    src="./logo3.png"
+                    alt="WhatsApp"
+                >
 
-        </a>
+                <span>+44 7522 321054</span>
+
+            </a>
+
+        </div>
 
     </div>
 
+
+    <div class="button-section with-title">
+
+        <div class="section-title">
+            DELIVERIES / POSTALS / COLLECTIONS
+        </div>
+
+        <div class="small-purple-note">
+            (Open 24H Monday-Sunday)
+        </div>
+
+        <div class="red-note">
+            (If the number above does not respond, please contact the number below)
+        </div>
+
+        <div class="buttons">
+
+            <a
+                class="whatsapp-button"
+                href="https://api.whatsapp.com/send/?phone=447417328618"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <img
+                    class="whatsapp-icon"
+                    src="./logo3.png"
+                    alt="WhatsApp"
+                >
+
+                <span>+44 7417 328618</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="bottom-note">
+
+        Please message one of the numbers above on WhatsApp for the full menu and prices.
+        Menu can also be found in the WhatsApp channel posted daily.
+
+        <br><br>
+
+        We operate strictly via WhatsApp. Any phone calls/texts that arent made through WhatsApp will not be answered.
+
+    </div>
+
+
 </div>
 
-
-<div class="bottom-note">
-
-    Please message one of the numbers above on WhatsApp for the full menu and prices.
-    Menu can also be found in the WhatsApp channel posted daily.
-
-    <br><br>
-
-    We operate strictly via WhatsApp. Any phone calls/texts that arent made through WhatsApp will not be answered.
-
-</div>
-
-</div>
 
 </body>
+
 </html>
